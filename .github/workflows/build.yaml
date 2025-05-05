@@ -1,8 +1,10 @@
 name: Build and Upload
+
 on:
   push:
     branches: [main]
   pull_request:
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,13 +27,22 @@ jobs:
         working-directory: ./word-game-web
         run: npm install
 
-      - name: Build project
-        run: make build
+      - name: Build frontend
+        working-directory: ./word-game-web
+        run: npm run build
 
-      - name: Upload artifact
+      - name: Cross-compile for macOS, Linux, and Windows
+        run: |
+          GOOS=darwin GOARCH=arm64 go build -o wordle-mac
+          GOOS=linux GOARCH=amd64 go build -o wordle-linux
+          GOOS=windows GOARCH=amd64 go build -o wordle-windows.exe
+
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: word-guessing-game
           path: |
-            ./word-guessing-game
-            ./wordlist.txt
+            wordle-mac
+            wordle-linux
+            wordle-windows.exe
+            wordlist.txt

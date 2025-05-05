@@ -32,7 +32,7 @@ jobs:
       - name: Move binaries for upload
         run: |
           mkdir upload
-          cp bin/word-guessing-game-* upload/
+          cp bin/word-guessing-game* upload/
           cp wordlist.txt upload/
 
       - name: Upload artifacts

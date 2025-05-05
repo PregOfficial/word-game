@@ -2,9 +2,7 @@
 
 Go test project with a React frontend.
 
-My first Go project.
-
-The frontend was built using GenAI.
+The frontend was built with the help of GenAI.
 
 ## Instructions
 
@@ -19,32 +17,34 @@ make build
 The word list needs to be in the same directory as the binary
 
 ```
-chmod +x word-guessing-game
+chmod +x word-guessing-game-<<platform>>
 cp wordlist.txt your-destination
 ```
 
 #### Run
 
 ```
-./word-guessing-game
+./word-guessing-game-<<platform>>
 ```
 
 ## Endpoints
 
 #### Frontend
 
-```
+```sh
 http://localhost:8080
 ```
 
 #### Start game
 
-```
+```sh
 http://localhost:8080/api/start
+
+curl --location --request POST 'localhost:8080/api/start'
 ```
 
 #### Guess
 
-```
+```sh
 http://localhost:8080/api/guess
 ```

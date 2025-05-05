@@ -33,16 +33,16 @@ jobs:
 
       - name: Cross-compile for macOS, Linux, and Windows
         run: |
-          GOOS=darwin GOARCH=arm64 go build -o wordle-mac
-          GOOS=linux GOARCH=amd64 go build -o wordle-linux
-          GOOS=windows GOARCH=amd64 go build -o wordle-windows.exe
+          GOOS=darwin GOARCH=arm64 go build -o word-guessing-game-mac
+          GOOS=linux GOARCH=amd64 go build -o word-guessing-game-linux
+          GOOS=windows GOARCH=amd64 go build -o word-guessing-game-windows.exe
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: word-guessing-game
           path: |
-            wordle-mac
-            wordle-linux
-            wordle-windows.exe
+            word-guessing-game-mac
+            word-guessing-game-linux
+            word-guessing-game-windows.exe
             wordlist.txt
